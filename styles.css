@@ -1,0 +1,161 @@
+.bg-primary { background-color: #1A3868; }
+.text-primary { color: #ffffff; }
+.bg-secondary { background-color: #1A3868; }
+.border-primary { border-color: #1A3868; }
+.hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/background.png');
+    background-size: cover;
+    background-position: center;
+}
+.transition-nav {
+    transition: all 0.3s ease;
+}
+
+/* Logo switching */
+#navbar .logo-blue {
+    display: block;
+}
+#navbar .logo-white {
+    display: none;
+}
+
+/* Navbar styling when scrolled */
+.scrolled {
+    background-color: #1A3868 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* When scrolled, hide blue logo and show white logo */
+.scrolled .logo-blue {
+    display: none !important;
+}
+.scrolled .logo-white {
+    display: block !important;
+}
+
+/* Make all text elements white when scrolled */
+.scrolled .nav-link,
+.scrolled .navbar-brand,
+.scrolled .nav-item,
+.scrolled a,
+.scrolled span,
+.scrolled #mobile-menu {
+    color: rgb(255, 255, 255) !important;
+}
+
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.animate-fade-in-up.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.hero-section a {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.hero-section a {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly more visible base transparency */
+    color: white;
+    border-radius: 25px;
+    padding: 12px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px); /* Increased blur for more prominent glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border for glass effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section a {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly more visible base transparency */
+    color: white;
+    border-radius: 25px;
+    padding: 12px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(1px); /* Increased blur for more prominent glass effect */
+    -webkit-backdrop-filter: blur(1px); /* For Safari support */
+    border: 1px solid rgba(235, 219, 219, 0.18); /* Subtle border for glass effect */
+    box-shadow: 0 4px 12px rgba(180, 171, 171, 0.15);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Telephone icon styling */
+.hero-section a:before {
+    content: '📞'; /* Telephone symbol */
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+/* Glass reflection effect */
+.hero-section a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+/* Animate the glass reflection on hover */
+.hero-section a:hover:after {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5),
+                0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Focus state */
+.hero-section a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4), 
+                0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Active state */
+.hero-section a:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
