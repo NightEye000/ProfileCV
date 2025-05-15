@@ -159,3 +159,75 @@
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
+/* Additional styles for sliders */
+.nursery-slider, .tanam-slider, .pruning-slider, .janjangan-slider, .gawangan-slider, .piringan-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.nursery-track, .tanam-track, .pruning-track, .janjangan-track, .gawangan-track, .piringan-track {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+/* Custom scrollbar for the slider (optional) */
+.nursery-slider::-webkit-scrollbar,
+.tanam-slider::-webkit-scrollbar,
+.pruning-slider::-webkit-scrollbar,
+.janjangan-slider::-webkit-scrollbar,
+.gawangan-slider::-webkit-scrollbar,
+.piringan-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Progress indicator dots (optional) */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    margin: 0 4px;
+    transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+    background-color: var(--primary-color, #4a5568);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nursery-slide, .tanam-slide, .pruning-slide, 
+    .janjangan-slide, .gawangan-slide, .piringan-slide {
+        width: 100%;
+    }
+}
+
+/* Better button visibility on mobile */
+@media (max-width: 640px) {
+    .nursery-prev, .nursery-next,
+    .tanam-prev, .tanam-next,
+    .pruning-prev, .pruning-next,
+    .janjangan-prev, .janjangan-next,
+    .gawangan-prev, .gawangan-next,
+    .piringan-prev, .piringan-next {
+        padding: 0.5rem;
+        backdrop-filter: blur(4px);
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Hide scrollbar for all browsers */
+.nursery-slider, .tanam-slider, .pruning-slider,
+.janjangan-slider, .gawangan-slider, .piringan-slider {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
