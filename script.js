@@ -74,3 +74,82 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to create slider functionality
+    function createSlider(sliderClass, trackClass, slideClass, prevBtnClass, nextBtnClass) {
+        const slider = document.querySelector(`.${sliderClass}`);
+        const track = document.querySelector(`.${trackClass}`);
+        const slides = document.querySelectorAll(`.${slideClass}`);
+        const prevBtn = document.querySelector(`.${prevBtnClass}`);
+        const nextBtn = document.querySelector(`.${nextBtnClass}`);
+        
+        if (!slider || !track || slides.length === 0 || !prevBtn || !nextBtn) return;
+        
+        let slideWidth = slides[0].offsetWidth;
+        let currentIndex = 0;
+        const slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+        const maxIndex = Math.max(0, slides.length - slidesPerView);
+        
+        // Function to update slider position
+        function updateSliderPosition() {
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+        
+        // Event listeners for buttons
+        prevBtn.addEventListener('click', () => {
+            currentIndex = Math.max(0, currentIndex - 1);
+            updateSliderPosition();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentIndex = Math.min(maxIndex, currentIndex + 1);
+            updateSliderPosition();
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            slideWidth = slides[0].offsetWidth;
+            updateSliderPosition();
+        });
+        
+        // Initialize
+        updateSliderPosition();
+        
+        // Add touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            // Minimum swipe distance (in px) to register as swipe
+            const swipeThreshold = 50;
+            
+            if (touchStartX - touchEndX > swipeThreshold) {
+                // Swipe left - go next
+                currentIndex = Math.min(maxIndex, currentIndex + 1);
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                // Swipe right - go prev
+                currentIndex = Math.max(0, currentIndex - 1);
+            }
+            
+            updateSliderPosition();
+        }
+    }
+    
+    // Initialize all sliders
+    createSlider('nursery-slider', 'nursery-track', 'nursery-slide', 'nursery-prev', 'nursery-next');
+    createSlider('tanam-slider', 'tanam-track', 'tanam-slide', 'tanam-prev', 'tanam-next');
+    createSlider('pruning-slider', 'pruning-track', 'pruning-slide', 'pruning-prev', 'pruning-next');
+    createSlider('janjangan-slider', 'janjangan-track', 'janjangan-slide', 'janjangan-prev', 'janjangan-next');
+    createSlider('gawangan-slider', 'gawangan-track', 'gawangan-slide', 'gawangan-prev', 'gawangan-next');
+    createSlider('piringan-slider', 'piringan-track', 'piringan-slide', 'piringan-prev', 'piringan-next');
+});
